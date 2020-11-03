@@ -24,7 +24,14 @@ namespace SiteAvailabilityApi.Services
 
         public Task SendSiteToQueue(Site site)
         {
-            var factory = new ConnectionFactory() { HostName = _hostname, UserName = _username, Password = _password };
+            var factory = new ConnectionFactory() 
+            { 
+                HostName = _hostname,
+                UserName = _username,
+                Password = _password,
+                Port = 5672,
+                VirtualHost = "/"
+            };
 
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
