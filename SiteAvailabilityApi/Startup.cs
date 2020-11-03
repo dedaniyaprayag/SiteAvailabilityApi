@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SiteAvailabilityApi.Config;
+using SiteAvailabilityApi.Infrastructure;
 using SiteAvailabilityApi.Services;
 
 namespace SiteAvailabilityApi
@@ -29,7 +30,7 @@ namespace SiteAvailabilityApi
         {
             services.AddControllers();
             services.AddOptions();
-            services.Configure<RabbitMqConfiguration>(Configuration.GetSection("RabbitMq"));
+            services.AddSingleton<IRabbitMqConfiguration>(Configuration.GetSection("RabbitMq").Get<RabbitMqConfiguration>());
             services.AddTransient<IAvailabilityService, AvailabiltyService>();
         }
 
