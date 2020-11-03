@@ -25,7 +25,7 @@ namespace SiteAvailabilityApi.Services
 
         }
 
-        public Task SendSiteToQueue(Site site)
+        public void SendSiteToQueue(Site site)
         {
             var factory = new ConnectionFactory() 
             { 
@@ -42,7 +42,7 @@ namespace SiteAvailabilityApi.Services
             var json = JsonConvert.SerializeObject(site);
             var body = Encoding.UTF8.GetBytes(json);
 
-            return Task.Run(() => channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body));
+            channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body);
         }
     }
 }

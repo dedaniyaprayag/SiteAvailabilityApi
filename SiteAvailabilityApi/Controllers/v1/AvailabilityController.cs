@@ -34,7 +34,8 @@ namespace SiteAvailabilityApi.Controllers
         {
             try
             {
-                return Ok(_availabilityService.SendSiteToQueue(site));
+                _availabilityService.SendSiteToQueue(site);
+                return Ok();
             }
             catch (Exception ex)
             {

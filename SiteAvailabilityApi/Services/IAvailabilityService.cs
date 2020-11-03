@@ -5,6 +5,6 @@ namespace SiteAvailabilityApi.Services
 {
     public interface IAvailabilityService
     {
-        Task SendSiteToQueue(Site site);
+        void SendSiteToQueue(Site site);
     }
 }
