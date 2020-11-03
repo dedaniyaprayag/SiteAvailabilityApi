@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SiteAvailabilityApi.Config;
+using SiteAvailabilityApi.Services;
 
 namespace SiteAvailabilityApi
 {
@@ -26,6 +28,9 @@ namespace SiteAvailabilityApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddOptions();
+            services.Configure<RabbitMqConfiguration>(Configuration.GetSection("RabbitMq"));
+            services.AddTransient<IAvailabilityService, AvailabiltyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
