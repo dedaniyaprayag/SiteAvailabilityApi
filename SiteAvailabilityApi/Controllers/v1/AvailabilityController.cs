@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SiteAvailabilityApi.Models;
 using SiteAvailabilityApi.Services;
 using System;
+using System.Threading.Tasks;
 
 namespace SiteAvailabilityApi.Controllers
 {
@@ -12,9 +13,9 @@ namespace SiteAvailabilityApi.Controllers
 
     public class AvailabilityController : ControllerBase
     {
-        private readonly IAvailabilityService _availabilityService;
+        private readonly ISiteAvailablityService _availabilityService;
 
-        public AvailabilityController(IAvailabilityService availabilityService)
+        public AvailabilityController(ISiteAvailablityService availabilityService)
         {
             _availabilityService = availabilityService;
         }
@@ -36,6 +37,19 @@ namespace SiteAvailabilityApi.Controllers
             {
                 _availabilityService.SendSiteToQueue(site);
                 return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSiteHistoryByUser(string userId)
+        {
+            try
+            {
+                return Ok(await _availabilityService.GetSiteHistoryByUser(userId));
             }
             catch (Exception ex)
             {

@@ -1,5 +1,4 @@
 ﻿using RabbitMQ.Client;
-using SiteAvailabilityApi.Config;
 using System;
 
 namespace SiteAvailabilityApi.Infrastructure

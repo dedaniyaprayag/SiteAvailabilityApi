@@ -30,8 +30,10 @@ namespace SiteAvailabilityApi
         {
             services.AddControllers();
             services.AddOptions();
+            services.AddSingleton<IPostgreSqlConfiguration>(Configuration.GetSection("PostgreSql").Get<PostgreSqlConfiguration>());
             services.AddSingleton<IRabbitMqConfiguration>(Configuration.GetSection("RabbitMq").Get<RabbitMqConfiguration>());
-            services.AddTransient<IAvailabilityService, AvailabiltyService>();
+            services.AddTransient<ISiteAvailablityService, SiteAvailabilityService>();
+            services.AddTransient<ISiteAvailabilityProvider, SiteAvailabilityProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

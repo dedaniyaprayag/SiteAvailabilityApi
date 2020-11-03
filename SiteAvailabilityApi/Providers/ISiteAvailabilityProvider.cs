@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace SiteAvailabilityApi.Services
 {
-    public interface ISiteAvailablityService
+    public interface ISiteAvailabilityProvider
     {
-        void SendSiteToQueue(Site site);
         Task<IEnumerable<Site>> GetSiteHistoryByUser(string userid);
     }
+
 }
