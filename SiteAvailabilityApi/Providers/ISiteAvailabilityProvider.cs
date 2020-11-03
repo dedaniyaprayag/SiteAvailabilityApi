@@ -6,7 +6,7 @@ namespace SiteAvailabilityApi.Services
 {
     public interface ISiteAvailabilityProvider
     {
-        Task<IEnumerable<Site>> GetSiteHistoryByUser(string userid);
+        Task<IEnumerable<SiteDto>> GetSiteHistoryByUser(string userid);
     }
 
 }

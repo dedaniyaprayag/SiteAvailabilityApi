@@ -16,13 +16,24 @@ namespace SiteAvailabilityApi.Services
             _postgreConfiguration = postgreConfiguration;
         }
 
-        public async Task<IEnumerable<Site>> GetSiteHistoryByUser(string userid)
+        public async Task<IEnumerable<SiteDto>> GetSiteHistoryByUser(string userid)
         {
             using var conn = new NpgsqlConnection(_postgreConfiguration.ConnectionString);
             conn.Open();
-            string getAllSitesByUserId = @"SELECT * FROM patient WHERE userid=" + userid;
-            using var command = new NpgsqlCommand(getAllSitesByUserId, conn);
-            return await conn.QueryAsync<Site>(getAllSitesByUserId);
+            string getAllSitesByUserId = @"SELECT * FROM sitehistory WHERE userid= '" + userid + "'";
+
+            //string sql = @"INSERT INTO sitehistory (userid,site,status)
+            //                     VALUES (@UserId,@Url,@Status)";
+
+            // using var command = new NpgsqlCommand(sql, conn);
+            return await conn.QueryAsync<SiteDto>(getAllSitesByUserId);
+            //var site = new Site()
+            //{
+            //    Url = "jhgjhgh",
+            //    UserId = "123",
+            //    Status = 1
+            //};
+            //return await conn.ExecuteAsync(sql, site);
         }
     }
 
