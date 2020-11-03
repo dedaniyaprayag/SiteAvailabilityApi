@@ -2,11 +2,6 @@
 
 namespace SiteAvailabilityApi.Infrastructure
 {
-    public interface IRabbitMqConnection
-    {
-        IConnection GetRabbitMqConnection();
-    }
-
     public class RabbitMqConnection : IRabbitMqConnection
     {
         private readonly IConnection connection;
