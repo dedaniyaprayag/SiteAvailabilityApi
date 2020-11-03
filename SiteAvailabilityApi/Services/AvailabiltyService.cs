@@ -14,12 +14,15 @@ namespace SiteAvailabilityApi.Services
         private readonly string _queueName;
         private readonly string _username;
         private readonly string _password;
+        private readonly int _port;
         public AvailabiltyService(IOptions<RabbitMqConfiguration> rabbitMqOptions)
         {
             _hostname = rabbitMqOptions.Value.Hostname;
             _queueName = rabbitMqOptions.Value.QueueName;
             _username = rabbitMqOptions.Value.UserName;
             _password = rabbitMqOptions.Value.Password;
+            _port = rabbitMqOptions.Value.Port;
+
         }
 
         public Task SendSiteToQueue(Site site)
@@ -29,13 +32,12 @@ namespace SiteAvailabilityApi.Services
                 HostName = _hostname,
                 UserName = _username,
                 Password = _password,
-                Port = 5672,
-                VirtualHost = "/"
+                Port = _port
             };
 
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
-            channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+            channel.QueueDeclare(queue: _queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
 
             var json = JsonConvert.SerializeObject(site);
             var body = Encoding.UTF8.GetBytes(json);
