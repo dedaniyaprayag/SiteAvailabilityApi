@@ -33,7 +33,7 @@ namespace SiteAvailabilityApi
             services.AddSingleton<IPostgreSqlConfiguration>(Configuration.GetSection("PostgreSql").Get<PostgreSqlConfiguration>());
             services.AddSingleton<IRabbitMqConfiguration>(Configuration.GetSection("RabbitMq").Get<RabbitMqConfiguration>());
             services.AddTransient<ISiteAvailablityService, SiteAvailabilityService>();
-            services.AddTransient<ISiteAvailabilityProvider, SiteAvailabilityProvider>();
+            services.AddTransient<IDbProvider, PostgresSqlProvider>();
             services.AddSingleton<IRabbitMqConnection, RabbitMqConnection>();
         }
 

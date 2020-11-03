@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SiteAvailabilityApi.Services
 {
-    public class SiteAvailabilityProvider : ISiteAvailabilityProvider
+    public class PostgresSqlProvider : IDbProvider
     {
         private readonly IPostgreSqlConfiguration _postgreConfiguration;
 
-        public SiteAvailabilityProvider(IPostgreSqlConfiguration postgreConfiguration)
+        public PostgresSqlProvider(IPostgreSqlConfiguration postgreConfiguration)
         {
             _postgreConfiguration = postgreConfiguration;
         }

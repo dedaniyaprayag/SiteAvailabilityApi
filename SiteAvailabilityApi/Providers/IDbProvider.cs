@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace SiteAvailabilityApi.Services
 {
-    public interface ISiteAvailabilityProvider
+    public interface IDbProvider
     {
         Task<IEnumerable<SiteDto>> GetSiteHistoryByUser(string userid);
     }
