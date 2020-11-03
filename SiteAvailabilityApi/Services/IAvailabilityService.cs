@@ -6,7 +6,7 @@ namespace SiteAvailabilityApi.Services
 {
     public interface ISiteAvailablityService
     {
-        void SendSiteToQueue(Site site);
-        Task<IEnumerable<Site>> GetSiteHistoryByUser(string userid);
+        void SendSiteToQueue(SiteDto site);
+        Task<IEnumerable<SiteDto>> GetSiteHistoryByUser(string userid);
     }
 }

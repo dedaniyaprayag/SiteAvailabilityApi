@@ -1,6 +1,6 @@
 ﻿namespace SiteAvailabilityApi
 {
-    internal interface IRabbitMqConfiguration
+    public interface IRabbitMqConfiguration
     {
         string Hostname { get; set; }
 

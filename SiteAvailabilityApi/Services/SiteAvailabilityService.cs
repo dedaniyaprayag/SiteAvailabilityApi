@@ -11,19 +11,20 @@ namespace SiteAvailabilityApi.Services
     public class SiteAvailabilityService : ISiteAvailablityService
     {
         private readonly ISiteAvailabilityProvider _availabilityProvider;
-        public SiteAvailabilityService(ISiteAvailabilityProvider availabilityProvider)
+        private readonly IRabbitMqConnection _rabbitMqConnection;
+        public SiteAvailabilityService(ISiteAvailabilityProvider availabilityProvider, IRabbitMqConnection rabbitMqConnection)
         {
             _availabilityProvider = availabilityProvider;
+            _rabbitMqConnection = rabbitMqConnection;
         }
-        public async Task<IEnumerable<Site>> GetSiteHistoryByUser(string userid)
+        public async Task<IEnumerable<SiteDto>> GetSiteHistoryByUser(string userid)
         {
             return await _availabilityProvider.GetSiteHistoryByUser(userid);
         }
 
-        public void SendSiteToQueue(Site site)
+        public void SendSiteToQueue(SiteDto site)
         {
-
-            var channel = RabbitMqConnection.Instance.Connection.CreateModel();
+            var channel = _rabbitMqConnection.GetRabbitMqConnection().CreateModel();
             channel.QueueDeclare(queue: "availability_queue", durable: true, exclusive: false, autoDelete: false, arguments: null);
 
             var json = JsonConvert.SerializeObject(site);

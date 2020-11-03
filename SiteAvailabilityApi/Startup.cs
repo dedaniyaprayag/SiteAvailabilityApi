@@ -34,6 +34,7 @@ namespace SiteAvailabilityApi
             services.AddSingleton<IRabbitMqConfiguration>(Configuration.GetSection("RabbitMq").Get<RabbitMqConfiguration>());
             services.AddTransient<ISiteAvailablityService, SiteAvailabilityService>();
             services.AddTransient<ISiteAvailabilityProvider, SiteAvailabilityProvider>();
+            services.AddSingleton<IRabbitMqConnection, RabbitMqConnection>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

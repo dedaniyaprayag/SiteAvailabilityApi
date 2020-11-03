@@ -1,30 +1,32 @@
 ﻿using RabbitMQ.Client;
-using System;
 
 namespace SiteAvailabilityApi.Infrastructure
 {
-    public sealed class RabbitMqConnection
+    public interface IRabbitMqConnection
     {
-        private static readonly Lazy<RabbitMqConnection> Lazy = new Lazy<RabbitMqConnection>(() => new RabbitMqConnection());
+        IConnection GetRabbitMqConnection();
+    }
 
-        private RabbitMqConnection()
+    public class RabbitMqConnection : IRabbitMqConnection
+    {
+        private readonly IConnection connection;
+
+        public RabbitMqConnection(IRabbitMqConfiguration rabbitMqConfiguration)
         {
             var connectionFactory = new ConnectionFactory
             {
-                HostName = "myrabbitmqnrrnqu34ccqf4-vm0.eastus.cloudapp.azure.com",
-                Port = 5672,
-                UserName = "user",
-                Password = "Zaq1xsw2Cde3vfr4"
+                HostName = rabbitMqConfiguration.Hostname,
+                Port = rabbitMqConfiguration.Port,
+                UserName = rabbitMqConfiguration.UserName,
+                Password = rabbitMqConfiguration.Password
             };
 
-            Connection = connectionFactory.CreateConnection();
+            connection = connectionFactory.CreateConnection();
         }
 
-        public static RabbitMqConnection Instance
+        public IConnection GetRabbitMqConnection()
         {
-            get { return Lazy.Value; }
+            return connection;
         }
-
-        public IConnection Connection { get; }
     }
 }

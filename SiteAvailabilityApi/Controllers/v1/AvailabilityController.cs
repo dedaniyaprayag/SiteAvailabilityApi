@@ -31,7 +31,7 @@ namespace SiteAvailabilityApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public IActionResult PostMessageToQueue([FromBody] Site site)
+        public IActionResult PostMessageToQueue([FromBody] SiteDto site)
         {
             try
             {
@@ -44,8 +44,8 @@ namespace SiteAvailabilityApi.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetSiteHistoryByUser(string userId)
+        [HttpGet("GetSiteHistoryByUser/{userId}")]
+        public async Task<IActionResult> GetSiteHistoryByUserAsync(string userId)
         {
             try
             {
