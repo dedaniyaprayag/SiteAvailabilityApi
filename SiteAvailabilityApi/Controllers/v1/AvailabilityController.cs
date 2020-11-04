@@ -10,7 +10,6 @@ namespace SiteAvailabilityApi.Controllers
     [Produces("application/json")]
     [Route("v1/[controller]")]
     [ApiController]
-
     public class AvailabilityController : ControllerBase
     {
         private readonly ISiteAvailablityService _availabilityService;
@@ -31,7 +30,7 @@ namespace SiteAvailabilityApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public IActionResult PostMessageToQueue([FromBody] SiteDto site)
+        public IActionResult Post([FromBody] SiteDto site)
         {
             try
             {
@@ -44,11 +43,21 @@ namespace SiteAvailabilityApi.Controllers
             }
         }
 
+        /// <summary>
+        /// API to get SiteHistory By User.
+        /// </summary>
+        /// <param name="userId">userId</param>
+        /// <returns>List of Sites History For that User</returns>
+        /// <response code="200">Returned if the result is fecthed successfully</response>
+        /// <response code="400">Returned if the userId is not given</response>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("GetSiteHistoryByUser/{userId}")]
         public async Task<IActionResult> GetSiteHistoryByUserAsync(string userId)
         {
             try
             {
+                if(string.IsNullOrWhiteSpace(userId)) return BadRequest("Userid is Mandatory");
                 return Ok(await _availabilityService.GetSiteHistoryByUser(userId));
             }
             catch (Exception ex)
