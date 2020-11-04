@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteAvailabilityApi", "SiteAvailabilityApi.csproj", "{6A72C8BA-070E-4A0C-B4CC-CA17512E4BAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteAvailabilityApi", "SiteAvailabilityApi.csproj", "{6A72C8BA-070E-4A0C-B4CC-CA17512E4BAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteAvailabilityApi.Tests", "..\SiteAvailabilityApi.Tests\SiteAvailabilityApi.Tests.csproj", "{7C0AE7D6-EE8D-498A-936C-1C6EA9749695}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6A72C8BA-070E-4A0C-B4CC-CA17512E4BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A72C8BA-070E-4A0C-B4CC-CA17512E4BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A72C8BA-070E-4A0C-B4CC-CA17512E4BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0AE7D6-EE8D-498A-936C-1C6EA9749695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0AE7D6-EE8D-498A-936C-1C6EA9749695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0AE7D6-EE8D-498A-936C-1C6EA9749695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0AE7D6-EE8D-498A-936C-1C6EA9749695}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
