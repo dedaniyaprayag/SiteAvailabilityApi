@@ -29,6 +29,7 @@ namespace SiteAvailabilityApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            services.AddApplicationInsightsTelemetry();
             services.AddControllers();
             services.AddOptions();
             services.AddSingleton<IPostgreSqlConfiguration>(Configuration.GetSection("PostgreSql").Get<PostgreSqlConfiguration>());
