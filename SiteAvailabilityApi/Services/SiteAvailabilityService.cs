@@ -32,7 +32,7 @@ namespace SiteAvailabilityApi.Services
             var json = JsonConvert.SerializeObject(site);
             var body = Encoding.UTF8.GetBytes(json);
 
-            channel.BasicPublish(exchange: "", routingKey: _rabbitMqConfiguration.QueueName, basicProperties: null, body: body);
+            Task.Run(()=>channel.BasicPublish(exchange: "", routingKey: _rabbitMqConfiguration.QueueName, basicProperties: null, body: body));
         }
     }
 }

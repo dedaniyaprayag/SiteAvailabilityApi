@@ -20,20 +20,8 @@ namespace SiteAvailabilityApi.Services
         {
             using var conn = new NpgsqlConnection(_postgreConfiguration.ConnectionString);
             conn.Open();
-            string getAllSitesByUserId = @"SELECT * FROM sitehistory WHERE userid= '" + userid + "'";
-
-            //string sql = @"INSERT INTO sitehistory (userid,site,status)
-            //                     VALUES (@UserId,@Url,@Status)";
-
-            // using var command = new NpgsqlCommand(sql, conn);
+            string getAllSitesByUserId = @"SELECT * FROM sitehistoricaldata WHERE userid= '" + userid + "'";
             return await conn.QueryAsync<SiteDto>(getAllSitesByUserId);
-            //var site = new Site()
-            //{
-            //    Url = "jhgjhgh",
-            //    UserId = "123",
-            //    Status = 1
-            //};
-            //return await conn.ExecuteAsync(sql, site);
         }
     }
 
