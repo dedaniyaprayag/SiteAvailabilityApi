@@ -30,6 +30,10 @@ AppInsights
 
 ![Optional Text](Images/SiteAvailablityTelemetry.png)
 
+# Swagger
+
+![Optional Text](Images/Swagger.png)
+
 
 # SiteAvailabilityApi.Tests
 
