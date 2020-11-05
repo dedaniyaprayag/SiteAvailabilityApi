@@ -8,8 +8,10 @@ SiteAvailabilityApi
 
 # TechStack : 
 .Net Core 3.1 Web API
+
 # Services Used : 
 RabbitMq Message Queue, PostgreSql.
+
 # Features : 
 There are two Web API is implemented in this Project.
 
@@ -37,4 +39,4 @@ AppInsights
 
 # SiteAvailabilityApi.Tests
 
-Added Unit Tests for SiteAvailability API
+Unit Tests for SiteAvailability API
