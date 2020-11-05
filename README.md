@@ -30,3 +30,7 @@ AppInsights
 
 ![Optional Text](Images/SiteAvailablityTelemetry.png)
 
+
+# SiteAvailabilityApi.Tests
+
+Added Unit Tests for SiteAvailability API
