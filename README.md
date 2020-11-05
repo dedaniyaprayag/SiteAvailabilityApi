@@ -7,7 +7,7 @@
 SiteAvailabilityApi
 
 # TechStack : 
-.Net Core 3.1 We API
+.Net Core 3.1 Web API
 # Services Used : 
 RabbitMq Message Queue, PostgreSql.
 # Features : 
@@ -28,5 +28,5 @@ Docker Compose File
 
 AppInsights
 
-![Optional Text](Images/siteAvailabilityArch.png)
+![Optional Text](Images/SiteAvailablityTelemetry.png)
 
